@@ -3,10 +3,10 @@ import Vue from 'vue';
 import View from '@/View.vue'
 
 // vuex
-import store from '@/app/store';
+import store from '@/admin/store';
 
 // router
-import router from '@/app/router';
+import router from '@/admin/router';
 
 // axios
 import axios from '@/utils/axios';
@@ -20,4 +20,4 @@ new Vue({
     router,
     store,
     render: h => h(View)
-}).$mount('#app');
+}).$mount('#admin');

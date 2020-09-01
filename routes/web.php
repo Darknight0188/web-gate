@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Client
+Route::get('/{any}', function () {
+    return view('admin');
+})->where('any', '.*')->name('app');
 
-Route::prefix('{locale?}')->middleware(['locale', 'locale_redirect'])->group(function() {
-    route::get('/', 'UserController@getLogin')->name('login');
-    route::post('/', 'UserController@postLogin');
-    route::get('/home', 'UserController@home')->name('home');
-    
-});
-
-Route::post('language/change', 'LanguageController@postChangeLanguage')->name('language.change');
+// Admin
+// Route::get('/{any}', function () {
+//     return view('admin');
+// })->where('any', '.*')->name('admin');
