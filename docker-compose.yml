@@ -1,0 +1,58 @@
+version: '3'
+services:
+  # The Application
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    container_name: mlh-gate-php
+    ports:
+      - "9009:9000"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+
+  webserver:
+    image: nginx
+    links: 
+      - app:fpm
+    container_name: mlh-gate-webserver
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./:/var/www/html
+      - ./storage/logs/nginx/:/var/log/nginx
+      - ./docker/nginx_conf:/etc/nginx/conf.d/
+    ports:
+    - "8008:80"
+    - "443:443"
+
+  # The Database
+  mysql:
+    image: mysql:5.7
+    container_name: mlh-gate-mysql
+    working_dir: /application
+    volumes:
+      - .:/application
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mlh-gate
+      - MYSQL_USER=mlh-gate
+      - MYSQL_PASSWORD=123qweA@
+    ports:
+      - "3306:3306"
+
+  composer:
+    image: composer
+    volumes:
+      - ./:/app
+    working_dir: /app
+    entrypoint: ['composer']
+
+  artisan:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    volumes:
+      - ./:/app
+    entrypoint: ['php', '/app/artisan']
