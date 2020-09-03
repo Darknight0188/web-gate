@@ -42,13 +42,6 @@ services:
     ports:
       - "3306:3306"
 
-  composer:
-    image: composer
-    volumes:
-      - ./:/app
-    working_dir: /app
-    entrypoint: ['composer']
-
   artisan:
     build:
       context: ./
