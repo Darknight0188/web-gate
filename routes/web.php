@@ -12,12 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Client
-Route::get('/{any}', function () {
-    return view('admin');
-})->where('any', '.*')->name('app');
+//Admin
+Route::domain('admin.' . env('APP_URL'))->group(function() {
+    Route::get('/{any}', function () {
+        return view('admin');
+    })->where('any', '.*')->name('admin');
+});
 
-// Admin
-// Route::get('/{any}', function () {
-//     return view('admin');
-// })->where('any', '.*')->name('admin');
+//Client
+Route::get('/{any}', function () {
+    return view('app');
+})->where('any', '.*')->name('app');
