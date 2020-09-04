@@ -38,5 +38,10 @@ docker exec -it mlh-gate-php sh
 php artisan key:generate
 ```
 
+## Auto fix code php, back-end
+```
+./vendor/bin/phpcbf
+```
+
 ## Open web
 ** https://localhost **
