@@ -27,7 +27,8 @@
         "js-cookie": "^2.2.1",
         "vue": "^2.6.12",
         "vue-router": "^3.4.3",
-        "vuex": "^3.5.1"
+        "vuex": "^3.5.1",
+        "yarn": "^1.22.5"
     },
     "husky": {
         "hooks": {
@@ -35,6 +36,8 @@
         }
     },
     "lint-staged": {
-        "(app|tests)/**/*.php": ["./vendor/bin/phpcs"]
+        "(app|tests)/**/*.php": [
+            "./vendor/bin/phpcs"
+        ]
     }
 }
