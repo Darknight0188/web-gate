@@ -14,16 +14,18 @@ class CreateCandidatesTable extends Migration
     public function up()
     {
         Schema::create('candidates', function (Blueprint $table) {
-            $table->id();
-            $table->string('email', 45)->unique();
-            $table->string('username', 45)->unique();
-            $table->string('password', 45);
-            $table->string('status', 45);
+            $table->increments('id');
+            $table->string('full_name');
+            $table->dateTime('birthday')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone', 20);
+            $table->string('email')->unique();
+            $table->string('user_name')->nullable();
+            $table->string('password')->nullable();
+            $table->integer('status');
+            $table->char('created_by', 36)->nullable();
+            $table->char('updated_by', 36)->nullable();
             $table->timestamps();
-            $table->string('updated_by', 45)->nullable();
-            $table->string('created_by', 45);
-            $table->dateTime('birthday');
-            $table->string('address', 45);
         });
     }
 

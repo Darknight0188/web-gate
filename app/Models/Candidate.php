@@ -7,7 +7,16 @@ class Candidate extends Model
 {
     protected $table = 'candidates';
     protected $fillable = [
-        'email','username','password','status','birthday','address','created_by','updated_by'
+        'full_name',
+        'phone',
+        'email',
+        'username',
+        'password',
+        'status',
+        'birthday',
+        'address',
+        'created_by',
+        'updated_by'
     ];
 
     public function candidateAttachFile()

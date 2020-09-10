@@ -19,4 +19,3 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/candidate/create', 'CandidateController@store');
-Route::post('/candidate/update/{id}', 'CandidateController@update');

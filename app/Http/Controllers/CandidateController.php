@@ -41,7 +41,7 @@ class CandidateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CandidateRequest $request)
+    public function store(Request $request)
     {
         if ($request->hasFile('file')) {
             $this->candidateService->createCandidate($request->all());
@@ -51,7 +51,8 @@ class CandidateController extends Controller
         } else {
             $this->candidateService->createCandidate($request->all());
         }
-        return "success";
+
+        return Candidate::with('candidateAttachFile')->get();
     }
 
     /**

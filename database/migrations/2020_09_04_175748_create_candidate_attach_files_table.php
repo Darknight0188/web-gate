@@ -14,11 +14,9 @@ class CreateCandidateAttachFilesTable extends Migration
     public function up()
     {
         Schema::create('candidate_attach_files', function (Blueprint $table) {
-            $table->id();
-            $table->integer('candidate_id')->unsigned();
+            $table->increments('id');
+            $table->integer('candidate_id');
             $table->string('file_url');
-            $table->string('type',45);
-            $table->timestamps();
         });
     }
 
